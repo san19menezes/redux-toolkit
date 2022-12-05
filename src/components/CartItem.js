@@ -4,10 +4,10 @@ import "./Cart.css";
 import { cartActions } from "../store/cart-slice";
 const CartItem = ({ name, quantity, total, price, id }) => {
   const dispatch = useDispatch();
-  const removeHandler = () => {
+  const decrementCartItemsHandler = () => {
     dispatch(cartActions.removeFromCart(id));
   };
-  const addHandler = () => {
+  const incrementCartItemsHandler = () => {
     dispatch(
       cartActions.addToCart({
         id,
@@ -22,10 +22,10 @@ const CartItem = ({ name, quantity, total, price, id }) => {
       <p>${price} /-</p>
       <p>x{quantity}</p>
       <article>Total ${total}</article>
-      <button className="cart-actions" onClick={removeHandler}>
+      <button className="cart-actions" onClick={decrementCartItemsHandler}>
         -
       </button>
-      <button className="cart-actions" onClick={addHandler}>
+      <button className="cart-actions" onClick={incrementCartItemsHandler}>
         +
       </button>
     </div>
